@@ -41,3 +41,15 @@ gsap.timeline({
     .fromTo(".circle--left .circleInner", { x: 100 }, { x: 0, opacity: 1 })
     .fromTo(".circle--center .circleInner", { x: 200 }, { x: 0, opacity: 1 })
     .fromTo(".circle--right .circleInner", { x: 300 }, { x: 0, opacity: 1 });
+
+gsap.timeline({
+    scrollTrigger: {
+        trigger: ".section3",
+        start: "top center",
+        end: "+=3000",
+        scrub: !0,
+        pin: true,  // 當動畫執行中的時候，讓觸發選擇器位置固定住
+    },
+    ease: "strong.inOut",
+})
+    .fromTo(".x-axis", { x: 0 }, { x: "-75%" });

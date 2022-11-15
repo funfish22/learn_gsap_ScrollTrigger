@@ -203,6 +203,28 @@ body {
           box-shadow: 0 0 10px bisque;
 }
 
+.section3 {
+  padding: 50px 0;
+  overflow: hidden;
+}
+
+.x-axis {
+  width: 5000px;
+  height: 200px;
+  border: 1px solid aqua;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #fff;
+  font-size: 60px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .footer {
   height: 80px;
   display: -webkit-box;
