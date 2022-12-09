@@ -1,3 +1,12 @@
+var frameNumber = 0
+var playbackConst = 1000
+var section4 = document.querySelector('.section4')
+var scrollHeight = 0
+var vid = document.querySelector('.video-fingers')
+var videoTop = 0
+var windowHeight = window.innerHeight;
+var requestId
+
 gsap.to(".box--left", {
     opacity: 1,
     x: "0",
@@ -53,3 +62,53 @@ gsap.timeline({
     ease: "strong.inOut",
 })
     .fromTo(".x-axis", { x: 0 }, { x: "-75%" });
+
+
+vid.addEventListener('loadedmetadata', () => {
+    scrollHeight = Math.floor(vid.duration) * playbackConst
+    // section4.style.height = Math.floor(vid.duration) * playbackConst + "px";
+    videoTop = section4.offsetTop
+    gsap.timeline({
+        scrollTrigger: {
+            trigger: ".section4",
+            start: "top 0%",
+            end: `+=${scrollHeight}`,
+            scrub: !0,
+            pin: true,  // 當動畫執行中的時候，讓觸發選擇器位置固定住
+            onEnter: () => {
+                start()
+            },
+            onEnterBack: () => {
+                start()
+            },
+            onLeaveBack: () => {
+                stop()
+            },
+            onLeave: () => {
+                stop()
+            }
+        }
+    })
+})
+
+function scrollPlay() {
+    requestId = undefined
+    var frameNumber  = (window.pageYOffset - videoTop)/playbackConst;
+    vid.currentTime  = frameNumber
+    start()
+}
+
+function start() {
+    var frameNumber  = (window.pageYOffset - videoTop)/playbackConst;
+    vid.currentTime  = frameNumber
+    if (!requestId) {
+        requestId = window.requestAnimationFrame(scrollPlay);
+    }
+}
+
+function stop() {
+    if (requestId) {
+        window.cancelAnimationFrame(requestId);
+        requestId = undefined;
+    }
+}
