@@ -180,7 +180,12 @@ body {
 .section4 {
   padding: 50px 0;
   border-top: 1px solid #fff;
-  border-bottom: 1px solid #fff;
+}
+
+.section5 {
+  padding: 50px 0;
+  border-top: 1px solid #fff;
+  text-align: center;
 }
 
 .footer {
@@ -188,6 +193,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  border-top: 1px solid #fff;
 }
 
 .reserved {
