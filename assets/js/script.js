@@ -125,10 +125,8 @@ vid.addEventListener("loadedmetadata", () => {
 	images[0].onload = render;
 
 	function render() {
-		console.log("123456");
 		context.clearRect(0, 0, headphoneCanvas.width, headphoneCanvas.height);
 		context.drawImage(images[airpods.frame], 0, 0, 800, 536);
-		// localStorage.setItem('airpodsFrame', airpods.frame);
 	}
 });
 
