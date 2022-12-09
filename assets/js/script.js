@@ -57,7 +57,7 @@ gsap.timeline({
 gsap.timeline({
 	scrollTrigger: {
 		trigger: ".section3",
-		start: "top center",
+		start: "top 0%",
 		end: "+=3000",
 		scrub: !0,
 		pin: true, // 當動畫執行中的時候，讓觸發選擇器位置固定住
