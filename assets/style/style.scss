@@ -23,6 +23,8 @@ body {
     text-align: center;
     text-transform: uppercase;
     margin-top: 0;
+    position: relative;
+    z-index: 1;
 }
 .banner {
     height: 100vh;
@@ -172,10 +174,39 @@ body {
 }
 
 .section5 {
-    padding: 50px 0;
     border-top: 1px solid #fff;
     text-align: center;
+    overflow: hidden;
+    position: relative;
+    .title {
+        position: absolute;
+        top: 50px;
+        left: 0;
+        right: 0;
+    }
+    .green {
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        background: #9eff6a;
+        border-radius: 50%;
+        opacity: 0;
+    }
+    &__title {
+        color: #000;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+    }
 }
+
+// .section6 {
+//     height: 100vh;
+// }
 
 .footer {
     height: 80px;

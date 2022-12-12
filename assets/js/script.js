@@ -108,25 +108,111 @@ vid.addEventListener("loadedmetadata", () => {
 		images.push(img);
 	}
 
-	gsap.to(airpods, {
-		frame: frameCount - 1,
-		snap: "frame",
-		ease: "none",
+	// gsap.to(airpods, {
+	// 	frame: frameCount - 1,
+	// 	snap: "frame",
+	// 	ease: "none",
+	// 	scrollTrigger: {
+	// 		trigger: ".section5",
+	// 		start: "top 0%",
+	// 		end: `+=1500`,
+	// 		scrub: 0.5,
+	// 		pin: true, // 當動畫執行中的時候，讓觸發選擇器位置固定住
+	// 	},
+	// 	onUpdate: render, // use animation onUpdate instead of scrollTrigger's onUpdate
+	// })
+
+	let section5 = gsap.timeline({
 		scrollTrigger: {
 			trigger: ".section5",
 			start: "top 0%",
-			end: `+=1500`,
+			end: `+=5000`,
 			scrub: 0.5,
 			pin: true, // 當動畫執行中的時候，讓觸發選擇器位置固定住
 		},
-		onUpdate: render, // use animation onUpdate instead of scrollTrigger's onUpdate
 	});
+	section5
+		.to(airpods, {
+			frame: frameCount - 1,
+			snap: "frame",
+			ease: "none",
+			onUpdate: render, // use animation onUpdate instead of scrollTrigger's onUpdate
+		})
+		.addLabel("section5Phone");
+
+	section5.to(
+		".headphone",
+		{
+			display: "block",
+			scale: 5,
+			duration: 2
+		},
+		"section5Phone"
+	);
+
+	section5.to(
+		".green",
+		{
+			keyframes: {
+				"3%": { opacity: 1 },
+				"50%": {scale: 100}
+			},
+			display: "block",
+			duration: 2
+		},
+		"section5Phone"
+	);
+
+	section5.to(
+		".section5__title",
+		{
+			keyframes: {
+				"15%": { opacity: 0 },
+				"20%": { opacity: 1 },
+			},
+			display: "block",
+			scale: 10,
+			duration: 2
+		},
+		"section5Phone"
+	);
+
+	// gsap.to('.green', {
+	// 	scrollTrigger: {
+	// 		trigger: ".section5",
+	// 		start: "top 100%",
+	// 		end: `+=1500`,
+	// 	}
+	// }, { scale: 1 }, { display: 'block', scale: 5 })
+
+	// section5.to(".green", {
+	// 	display: "block",
+	// 	scale: 5,
+	// });
+
+	// section5.from('green', {
+	// 	scrollTrigger: {
+	// 		trigger: ".section5",
+	// 		start: "top 0%"
+	// 	},
+
+	// }, { opacity: 0, scale: 1 }, { opacity: 1, scale: 2.3 })
+	// section5.fromTo(".green", { scale: 1 }, { scale: 2.3 });
 
 	images[0].onload = render;
 
+	headphoneCanvas.width = window.innerWidth;
+	headphoneCanvas.height = window.innerHeight;
+
 	function render() {
 		context.clearRect(0, 0, headphoneCanvas.width, headphoneCanvas.height);
-		context.drawImage(images[airpods.frame], 0, 0, 800, 536);
+		context.drawImage(
+			images[airpods.frame],
+			headphoneCanvas.width / 2 - 700,
+			headphoneCanvas.height / 2 - 1400 / headphoneProportion / 2,
+			1400,
+			1400 / headphoneProportion
+		);
 	}
 });
 
@@ -152,5 +238,5 @@ function stop() {
 	}
 }
 
-headphoneCanvas.width = 800;
-headphoneCanvas.height = 536;
+// headphoneCanvas.width = 800;
+// headphoneCanvas.height = 536;
