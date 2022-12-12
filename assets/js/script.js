@@ -145,7 +145,7 @@ vid.addEventListener("loadedmetadata", () => {
 		{
 			display: "block",
 			scale: 5,
-			duration: 2
+			duration: 1
 		},
 		"section5Phone"
 	);
@@ -155,10 +155,10 @@ vid.addEventListener("loadedmetadata", () => {
 		{
 			keyframes: {
 				"3%": { opacity: 1 },
-				"50%": {scale: 100}
+				"50%": {scale: 120}
 			},
 			display: "block",
-			duration: 2
+			duration: 1
 		},
 		"section5Phone"
 	);
@@ -172,7 +172,7 @@ vid.addEventListener("loadedmetadata", () => {
 			},
 			display: "block",
 			scale: 10,
-			duration: 2
+			duration: 1
 		},
 		"section5Phone"
 	);
